@@ -1,0 +1,6 @@
+baseURL = "https://bizideas.biz/"
+languageCode = "en-us"
+title = "bizideas.biz"
+
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT", "404"]
+ignoreFiles = ['\.tmp\.\d+\.\d+$']

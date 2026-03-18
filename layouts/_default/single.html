@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="site-header">
+    <a href="/" class="site-title">bizideas.biz</a>
+    <nav>
+      <a href="/about/" class="nav-link{{ if eq .RelPermalink "/about/" }} nav-link--active{{ end }}">about</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="idea-content" style="margin-top: 16px;">{{ .Content }}</div>
+  </main>
+{{ end }}

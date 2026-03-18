@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} — {{ site.Title }}{{ end }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{ block "main" . }}{{ end }}
+  <script>
+    const OPEN_DURATION = 600;
+    const CLOSE_DURATION = 150;
+    const EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
+
+    function animateAccordion(details, opening) {
+      const titleEl = details.querySelector('.idea-title');
+      const startH = titleEl.offsetHeight;
+
+      if (opening) details.setAttribute('open', '');
+      else details.removeAttribute('open');
+      const endH = titleEl.offsetHeight;
+      if (!opening) details.setAttribute('open', '');
+
+      titleEl.style.overflow = 'hidden';
+      titleEl.animate(
+        [{ height: startH + 'px' }, { height: endH + 'px' }],
+        { duration: opening ? OPEN_DURATION : CLOSE_DURATION, easing: EASING }
+      ).onfinish = () => {
+        titleEl.style.overflow = '';
+        if (!opening) details.removeAttribute('open');
+      };
+    }
+
+    document.querySelectorAll('.idea-export').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idea = btn.closest('.idea');
+        idea.classList.add('print-active');
+        window.onafterprint = () => idea.classList.remove('print-active');
+        window.print();
+      });
+    });
+
+    document.querySelectorAll('.idea-summary').forEach(summary => {
+      summary.addEventListener('click', e => {
+        e.preventDefault();
+        const details = summary.closest('.idea');
+        const isOpen = details.hasAttribute('open');
+
+        if (!isOpen) {
+          document.querySelectorAll('.idea[open]').forEach(openDetails => {
+            if (openDetails !== details) animateAccordion(openDetails, false);
+          });
+        }
+
+        animateAccordion(details, !isOpen);
+      });
+    });
+  </script>
+</body>
+</html>

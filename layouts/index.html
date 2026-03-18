@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <header class="site-header">
+    <a href="/" class="site-title">bizideas.biz</a>
+    <nav>
+      <a href="/about/" class="nav-link">about</a>
+    </nav>
+  </header>
+
+  <main class="ideas-list">
+
+    {{ $ideas := where site.RegularPages "Section" "ideas" }}
+    {{ $sorted := sort $ideas ".Params.number" "desc" }}
+
+    <hr class="idea-divider">
+
+    {{ range $i, $page := $sorted }}
+
+      <details class="idea">
+        <summary class="idea-summary">
+          <div class="idea-inner">
+            <span class="idea-circle">{{ $page.Params.number }}</span>
+            <div class="idea-title">
+              <div class="idea-title-closed">{{ $page.Params.summary }}...</div>
+              <div class="idea-title-open">{{ $page.Plain | safeHTML }} <button class="idea-export">PDF</button></div>
+            </div>
+          </div>
+        </summary>
+      </details>
+
+      {{ if lt $i (sub (len $sorted) 1) }}
+        <hr class="idea-divider">
+      {{ end }}
+
+    {{ end }}
+
+    <hr class="idea-divider">
+
+  </main>
+{{ end }}
