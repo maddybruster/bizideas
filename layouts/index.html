@@ -17,12 +17,10 @@
 
       <details class="idea">
         <summary class="idea-summary">
-          <div class="idea-inner">
-            <span class="idea-circle">{{ $page.Params.number }}</span>
-            <div class="idea-title">
-              <div class="idea-title-closed">{{ $page.Params.summary }}...</div>
-              <div class="idea-title-open">{{ $page.Plain | safeHTML }} <button class="idea-export">PDF</button></div>
-            </div>
+          <span class="idea-circle" aria-hidden="true">{{ $page.Params.number }}</span>
+          <div class="idea-text">
+            <div class="idea-title-closed">{{ $page.Params.summary }}...</div>
+            <div class="idea-title-open"><div class="idea-title-open-inner"><div class="idea-title-content">{{ $page.Content }}</div> <button class="idea-export">PDF</button></div></div>
           </div>
         </summary>
       </details>

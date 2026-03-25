@@ -4,3 +4,6 @@ title = "bizideas.biz"
 
 disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT", "404"]
 ignoreFiles = ['\.tmp\.\d+\.\d+$']
+
+[markup.goldmark.renderer]
+  unsafe = true
