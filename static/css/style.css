@@ -1,16 +1,3 @@
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("/fonts/LibreFranklin-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("/fonts/LibreFranklin-SemiBoldItalic.woff2") format("woff2");
-  font-weight: 600;
-  font-style: italic;
-}
 
 :root {
   --font-size: clamp(1.5rem, 3vw, 3.25rem);
@@ -30,10 +17,10 @@ html {
 }
 
 body {
-  font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: var(--font-size);
   line-height: 1.2;
-  font-weight: 600;
+  font-weight: 400;
   background-color: #fff;
   color: #111;
   padding: 0 40px;
@@ -121,6 +108,7 @@ main {
 .idea-text {
   flex: 1;
   min-width: 0;
+
 }
 
 .idea-title-closed {
