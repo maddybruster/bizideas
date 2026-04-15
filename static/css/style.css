@@ -212,9 +212,20 @@ main {
     overflow: visible !important;
   }
 
+  .idea.print-active .idea-title-open {
+    grid-template-rows: 1fr !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+  }
+
   body, .idea, .idea-text, .idea-title-open {
     margin: 0 !important;
     padding: 0 !important;
+  }
+
+  body {
+    padding: 1.5cm !important;
   }
 
   body {
