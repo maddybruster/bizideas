@@ -195,6 +195,11 @@ main {
     margin: 1.5cm;
   }
 
+  :root {
+    --font-size: 28pt;
+    --font-size-half: 14pt;
+  }
+
   .site-header,
   .idea-divider,
   .idea-export,
