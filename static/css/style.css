@@ -229,7 +229,8 @@ main {
   }
 
   body {
-    font-size: 4rem;
+    --font-size: 28pt;
+    font-size: 28pt !important;
   }
 }
 
